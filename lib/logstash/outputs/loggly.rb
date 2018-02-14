@@ -12,7 +12,7 @@ Net::BufferedIO.class_eval do
     BUFSIZE = 1024 * 16
 
     def rbuf_fill
-      timeout(@read_timeout) {
+      Timeout.timeout(@read_timeout) {
         @rbuf << @io.sysread(BUFSIZE)
       }
     end
